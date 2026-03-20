@@ -1,0 +1,11 @@
+name: sca-scan
+
+on:
+  pull_request:
+    branches: [master, main, staging]
+  workflow_dispatch:
+
+jobs:
+  run-sca:
+    uses: hostinger/sca-configs/.github/workflows/sca.yml@main
+    secrets: inherit
