@@ -1,0 +1,26 @@
+{
+  "name": "hostinger-agent-skills",
+  "owner": {
+    "name": "hostinger"
+  },
+  "metadata": {
+    "description": "Claude skills for Hostinger service management",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "hostinger-agent-skills",
+      "description": "Collection of Hostinger skills for Billing, DNS, Domains, Hosting, Email Marketing (Reach), and VPS management",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/billing",
+        "./skills/dns",
+        "./skills/domains",
+        "./skills/hosting",
+        "./skills/reach",
+        "./skills/vps"
+      ]
+    }
+  ]
+}
