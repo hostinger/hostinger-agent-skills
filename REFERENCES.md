@@ -39,9 +39,11 @@ Tokens are created at: https://hpanel.hostinger.com/profile/api
 
 | Skill | Base Path | Documentation Tag |
 |-------|-----------|-------------------|
-| Billing | `/api/billing/v1/` | Billing: Catalog, Orders, Payment methods, Subscriptions |
+| Billing | `/api/billing/v1/` | Billing: Catalog, Payment methods, Subscriptions |
 | DNS | `/api/dns/v1/` | DNS: Zone, Snapshot |
-| Domains | `/api/domains/v1/` | Domains: Availability, Forwarding, Portfolio, WHOIS |
-| Hosting | `/api/hosting/v1/` | Hosting: Datacenters, Domains, Orders, Websites |
+| Domains | `/api/domains/v1/` | Domains: Availability, Forwarding, Portfolio, WHOIS; Domain Access Verifier: Verifications (`/api/v2/direct/`) |
+| Ecommerce | `/api/ecommerce/v1/` | Ecommerce: Stores |
+| Hosting | `/api/hosting/v1/` | Hosting: Datacenters, Domains, Orders, Websites, Databases, Subdomains, Parked domains, NodeJS, WordPress |
+| Horizons | `/api/horizons/v1/` | Horizons: Websites (AI website builder) |
 | Reach | `/api/reach/v1/` | Reach: Contacts, Segments, Profiles |
 | VPS | `/api/vps/v1/` | VPS: Virtual machine, Docker Manager, Firewall, Public Keys, OS Templates, Post-install scripts, Actions, Backups, Snapshots, Recovery, PTR records, Malware scanner |

@@ -46,6 +46,14 @@ SIGNIFICANT_KEYWORDS = [
     "snapshot",
     "backup",
     "template",
+    "database",
+    "subdomain",
+    "wordpress",
+    "nodejs",
+    "ecommerce",
+    "store",
+    "horizons",
+    "verification",
 ]
 
 # Map API areas to skills
@@ -66,6 +74,11 @@ SKILL_MAPPING = {
     "hosting": "hosting",
     "website": "hosting",
     "datacenter": "hosting",
+    "database": "hosting",
+    "subdomain": "hosting",
+    "parked": "hosting",
+    "nodejs": "hosting",
+    "wordpress": "hosting",
     "vps": "vps",
     "virtual machine": "vps",
     "docker": "vps",
@@ -82,6 +95,14 @@ SKILL_MAPPING = {
     "contact": "reach",
     "segment": "reach",
     "email marketing": "reach",
+    "ecommerce": "ecommerce",
+    "e-commerce": "ecommerce",
+    "store": "ecommerce",
+    "sales channel": "ecommerce",
+    "horizons": "horizons",
+    "website builder": "horizons",
+    "verification": "domains",
+    "verifier": "domains",
 }
 
 
@@ -102,7 +123,9 @@ def save_check_time():
             "billing",
             "dns",
             "domains",
+            "ecommerce",
             "hosting",
+            "horizons",
             "reach",
             "vps",
         ],
