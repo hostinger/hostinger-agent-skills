@@ -1,13 +1,13 @@
 ---
 name: billing
-description: Hostinger Billing API for catalog browsing, order creation, payment method management, and subscription control. Use when checking pricing, placing orders, managing payment methods, viewing subscriptions, or toggling auto-renewal.
-last_updated: "2026-03-20"
+description: Hostinger Billing API for catalog browsing, payment method management, and subscription control. Use when checking pricing, managing payment methods, viewing subscriptions, or toggling auto-renewal.
+last_updated: "2026-06-12"
 doc_source: https://developers.hostinger.com
 ---
 
 # Hostinger Billing
 
-The Billing API allows you to browse the Hostinger service catalog, place orders, manage payment methods, and control subscriptions programmatically.
+The Billing API allows you to browse the Hostinger service catalog, manage payment methods, and control subscriptions programmatically. Orders are placed through resource-specific endpoints (e.g., domains and VPS), not a generic billing order endpoint.
 
 ## Table of Contents
 
@@ -26,7 +26,7 @@ The catalog contains available products and pricing. Prices are displayed in **c
 
 ### Orders
 
-Orders are created by referencing catalog `item_id` values and a payment method. Orders created via API are set for automatic renewal by default. Some `credit_card` payments may require additional verification.
+Orders are placed through resource-specific endpoints (e.g., `POST /api/domains/v1/portfolio`, `POST /api/vps/v1/virtual-machines`) by referencing catalog `item_id` values and a payment method. There is no longer a generic billing order endpoint. Orders created via API are set for automatic renewal by default. Some `credit_card` payments may require additional verification.
 
 ### Payment Methods
 
@@ -134,9 +134,7 @@ curl -X PATCH "https://developers.hostinger.com/api/billing/v1/subscriptions/123
 
 ### Orders
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `POST` | `/api/billing/v1/orders` | Create service order (**DEPRECATED** - use domain/VPS specific endpoints) |
+> **Removed:** the generic `POST /api/billing/v1/orders` endpoint is no longer part of the API. Place orders through the resource-specific endpoints instead — `POST /api/domains/v1/portfolio` for domains and `POST /api/vps/v1/virtual-machines` for VPS.
 
 ### Payment Methods
 
@@ -161,7 +159,7 @@ curl -X PATCH "https://developers.hostinger.com/api/billing/v1/subscriptions/123
 - Divide by 100 and format appropriately for display
 
 ### Orders
-- The generic `/api/billing/v1/orders` endpoint is **deprecated**
+- The generic `/api/billing/v1/orders` endpoint has been **removed** from the API
 - Use `POST /api/domains/v1/portfolio` for domain purchases
 - Use `POST /api/vps/v1/virtual-machines` for VPS purchases
 - Prefer non-credit-card payment methods to avoid verification delays

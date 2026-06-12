@@ -1,7 +1,7 @@
 ---
 name: reach
-description: Hostinger Reach (Email Marketing) API for contact management, segmentation, and profile management. Use when creating or listing contacts, managing contact segments, filtering contacts by groups or subscription status, or working with email marketing profiles.
-last_updated: "2026-03-20"
+description: Hostinger Reach (Email Marketing) API for contact management, segmentation, contact groups, and profile management. Use when creating or listing contacts, managing contact segments or groups, filtering contacts by subscription status, or working with email marketing profiles.
+last_updated: "2026-06-12"
 doc_source: https://developers.hostinger.com
 ---
 
@@ -45,7 +45,19 @@ Contacts can have different subscription statuses that determine whether they re
 ### Create and Manage Contacts
 
 ```bash
-# Create a new contact (via profile)
+# Create a new contact (direct)
+curl -X POST "https://developers.hostinger.com/api/reach/v1/contacts" \
+  -H "Authorization: Bearer $HOSTINGER_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "john@example.com",
+    "name": "John",
+    "surname": "Doe",
+    "phone": "+15551234567",
+    "note": "Met at conference"
+  }'
+
+# Create a new contact (scoped to a specific sender profile)
 curl -X POST "https://developers.hostinger.com/api/reach/v1/profiles/{profileUuid}/contacts" \
   -H "Authorization: Bearer $HOSTINGER_API_TOKEN" \
   -H "Content-Type: application/json" \
@@ -61,6 +73,10 @@ curl -X GET "https://developers.hostinger.com/api/reach/v1/contacts?page=1" \
 
 # Filter contacts by subscription status
 curl -X GET "https://developers.hostinger.com/api/reach/v1/contacts?subscription_status=active" \
+  -H "Authorization: Bearer $HOSTINGER_API_TOKEN"
+
+# List contact groups
+curl -X GET "https://developers.hostinger.com/api/reach/v1/contacts/groups" \
   -H "Authorization: Bearer $HOSTINGER_API_TOKEN"
 
 # Delete a contact
@@ -158,7 +174,9 @@ curl -X GET "https://developers.hostinger.com/api/reach/v1/profiles" \
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | `GET` | `/api/reach/v1/contacts` | List contacts (paginated, filterable) |
-| `POST` | `/api/reach/v1/profiles/{profileUuid}/contacts` | Create new contact |
+| `POST` | `/api/reach/v1/contacts` | Create a contact (direct) |
+| `POST` | `/api/reach/v1/profiles/{profileUuid}/contacts` | Create a contact scoped to a sender profile |
+| `GET` | `/api/reach/v1/contacts/groups` | List contact groups |
 | `DELETE` | `/api/reach/v1/contacts/{uuid}` | Delete a contact |
 
 ### Segments
@@ -203,7 +221,8 @@ curl -X GET "https://developers.hostinger.com/api/reach/v1/profiles" \
 ## Best Practices
 
 ### Contact Management
-- Use profiles endpoint (`/profiles/{profileUuid}/contacts`) for creating contacts (preferred over deprecated endpoint)
+- Use the direct `POST /contacts` endpoint for general contact creation; use `POST /profiles/{profileUuid}/contacts` when the contact must be tied to a specific sender profile
+- Prefer **segments** over **contact groups** for organizing contacts — groups are legacy
 - Enable double opt-in for compliance with email marketing regulations (GDPR, CAN-SPAM)
 - Clean your contact list regularly by removing bounced and unsubscribed contacts
 

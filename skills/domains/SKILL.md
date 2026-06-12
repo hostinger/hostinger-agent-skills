@@ -1,7 +1,7 @@
 ---
 name: domains
-description: Hostinger Domains API for domain portfolio management, availability checks, forwarding, WHOIS profiles, nameservers, domain lock, and privacy protection. Use when registering domains, checking availability, managing DNS delegation, configuring redirects, or handling WHOIS contact information.
-last_updated: "2026-03-20"
+description: Hostinger Domains API for domain portfolio management, availability checks, forwarding, WHOIS profiles, nameservers, domain lock, privacy protection, and domain access verifications. Use when registering domains, checking availability, managing DNS delegation, configuring redirects, handling WHOIS contact information, or checking domain verification status.
+last_updated: "2026-06-12"
 doc_source: https://developers.hostinger.com
 ---
 
@@ -43,6 +43,12 @@ Prevents unauthorized domain transfers. Must be disabled before transferring a d
 ### Privacy Protection
 
 Hides the domain owner's personal information from public WHOIS databases.
+
+### Domain Access Verification
+
+Some operations require proof that you control a domain. The Domain Access Verifier returns the pending and completed verifications for a set of domains, so you can check verification status before relying on a domain.
+
+> **Note:** This endpoint lives under a different base path — `/api/v2/direct/verifications/active` — not `/api/domains/v1/`.
 
 ## Common Patterns
 
@@ -225,6 +231,16 @@ curl -X DELETE "https://developers.hostinger.com/api/domains/v1/whois/741288" \
   -H "Authorization: Bearer $HOSTINGER_API_TOKEN"
 ```
 
+### Check Domain Verifications
+
+```bash
+# Get pending and completed verifications for one or more domains
+curl -X GET "https://developers.hostinger.com/api/v2/direct/verifications/active" \
+  -H "Authorization: Bearer $HOSTINGER_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{ "domains": ["example.com", "example.net"] }'
+```
+
 ## API Reference
 
 ### Availability
@@ -263,6 +279,12 @@ curl -X DELETE "https://developers.hostinger.com/api/domains/v1/whois/741288" \
 | `GET` | `/api/domains/v1/whois/{whoisId}` | Get WHOIS profile |
 | `DELETE` | `/api/domains/v1/whois/{whoisId}` | Delete WHOIS profile |
 | `GET` | `/api/domains/v1/whois/{whoisId}/usage` | Get profile usage |
+
+### Verifications
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/v2/direct/verifications/active` | Get pending and completed domain verifications (body: `domains` string array) |
 
 ## Best Practices
 

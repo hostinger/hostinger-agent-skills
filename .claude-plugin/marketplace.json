@@ -10,14 +10,16 @@
   "plugins": [
     {
       "name": "hostinger-agent-skills",
-      "description": "Collection of Hostinger skills for Billing, DNS, Domains, Hosting, Email Marketing (Reach), and VPS management",
+      "description": "Collection of Hostinger skills for Billing, DNS, Domains, Ecommerce, Hosting, Horizons, Email Marketing (Reach), and VPS management",
       "source": "./",
       "strict": false,
       "skills": [
         "./skills/billing",
         "./skills/dns",
         "./skills/domains",
+        "./skills/ecommerce",
         "./skills/hosting",
+        "./skills/horizons",
         "./skills/reach",
         "./skills/vps"
       ]
