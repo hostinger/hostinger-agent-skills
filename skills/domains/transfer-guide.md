@@ -121,15 +121,19 @@ curl -X PUT "https://developers.hostinger.com/api/domains/v1/portfolio/myproject
 
 ### Pointing to Hosting (Hostinger Nameservers)
 
-Use Hostinger's default nameservers to manage DNS through the Hostinger DNS API:
+Hostinger has no single set of default nameservers. The pair differs per customer and domain, and Hostinger DNS serves a zone only from the cluster of the pair it is on, so a wrong pair can make the domain unresolvable or move its zone.
+
+- Never guess a pair, and never use `ns1.dns-parking.com` / `ns2.dns-parking.com`: that is a legacy pair, not "the Hostinger nameservers".
+- A domain registered at Hostinger that is already on a `*.dns-parking.com` pair should keep it — do not change its nameservers.
+- Otherwise, use the pair hPanel shows for that domain ("Use Hostinger nameservers" on the domain's DNS / Nameservers page), or ask the user for it.
 
 ```bash
 curl -X PUT "https://developers.hostinger.com/api/domains/v1/portfolio/example.com/nameservers" \
   -H "Authorization: Bearer $HOSTINGER_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "ns1": "ns1.dns-parking.com",
-    "ns2": "ns2.dns-parking.com"
+    "ns1": "<ns1 from hPanel for this domain>",
+    "ns2": "<ns2 from hPanel for this domain>"
   }'
 ```
 
