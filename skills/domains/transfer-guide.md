@@ -123,9 +123,9 @@ curl -X PUT "https://developers.hostinger.com/api/domains/v1/portfolio/myproject
 
 Hostinger has no single set of default nameservers. The pair differs per customer and domain, and Hostinger DNS serves a zone only from the cluster of the pair it is on, so a wrong pair can make the domain unresolvable or move its zone.
 
+- If the domain is already on a `*.dns-parking.com` pair, keep that pair.
+- Otherwise, use the pair hPanel shows on the domain's Nameservers page, or ask the user for it.
 - Never guess a pair, and never use `ns1.dns-parking.com` / `ns2.dns-parking.com`: that is a legacy pair, not "the Hostinger nameservers".
-- A domain registered at Hostinger that is already on a `*.dns-parking.com` pair should keep it — do not change its nameservers.
-- Otherwise, use the pair hPanel shows for that domain ("Use Hostinger nameservers" on the domain's DNS / Nameservers page), or ask the user for it.
 
 ```bash
 curl -X PUT "https://developers.hostinger.com/api/domains/v1/portfolio/example.com/nameservers" \
