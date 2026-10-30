@@ -303,6 +303,7 @@ curl -X GET "https://developers.hostinger.com/api/v2/direct/verifications/active
 - Improper nameserver configuration makes the domain unresolvable
 - Always have at least 2 nameservers configured
 - Verify nameservers are responding before switching
+- Hostinger nameserver pairs differ per customer and domain. Keep an existing `*.dns-parking.com` pair; otherwise use the pair hPanel shows on the domain's Nameservers page, or ask the user. Never guess a pair, and never use `ns1.dns-parking.com` / `ns2.dns-parking.com` (a legacy pair). See `transfer-guide.md`
 
 ### Forwarding
 - Use `301` (permanent) for SEO-preserving redirects
